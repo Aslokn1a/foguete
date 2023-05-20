@@ -26,40 +26,50 @@
             top: 750px;
             left: 650px;
         }
+        
 
     </style>
 </head>
 <body>
     <img src="255px-BRA_orthographic.svg.png" class="chao">  
- <img onclick="subir()" src="foguete.gif" width="80px" class="foguete" id="foguete">
+ <img  src="foguete.gif" width="80px" class="foguete" id="foguete">
+
   
 </body>
 <script src="jquery-3.6.4.min.js"></script>
 <script>
-    //vamos pegar o tempo inicial:
+    var audio = new Audio('contagem_regressiva.mp3');
+    var audio2 = new Audio('lancamento_foguete.mp3');
+    var audio3 = new Audio('descendo_foguete.mp3');
     data = new Date()
     tempo_inicial = data.getTime()
-
-
+   
+    
+    
+    
+    //vamos pegar o tempo inicial:
+    
+    
 
     document.onkeydown = Pega_Tecla;    
     x = 750
     y = 10
     TOPO = ""
     ESQUERDA = "" 
-    temporizador = setTimeout(subir,1000)
+    temporizador = setTimeout(subir,16000)
+    
     function subir()
     {   
         TOPO = y + "px"
         
-        $("#foguete").animate({top:TOPO,},1000)
+        $("#foguete").animate({top:TOPO,},18000)
         temporizador = null
         temporizador = setInterval(Descer,1000)
     }
     function Descer()
     {
         
-        y = y + 100
+        y = y + 20
         if(y>700)
         {
             y = 700
@@ -94,10 +104,46 @@
                     x = x + 20
            
                 }  
-        }
-
-          
+        }    
     }
+    function playAudio() 
+    {
+        
+        audio.play();
+        console.log('deu certo')
+        
+    }
+    setTimeout(playAudio, 500)
+    function stopAudio()
+    {
+        
+        audio.pause();
+        console.log('deu certo')
+
+    }
+    setTimeout(stopAudio,14000)
+    
+    function playAudio2() 
+    {
+       
+        audio2.play();
+        console.log('deu certo novamente')
+    }
+    setTimeout(playAudio2, 14000)
+   
+    function playAudio3()
+    {
+        audio3.play();
+        console.log('deu certo3')
+    }
+    setTimeout(playAudio3,34000)
+    function stopAudio3()
+    {
+        audio3.pause();
+        console.log('sla')
+    }
+    setTimeout(playAudio3,36000)
+    
 
 </script>
 </html>
